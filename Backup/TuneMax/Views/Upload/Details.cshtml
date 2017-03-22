@@ -1,0 +1,35 @@
+﻿@model TuneMax.Models.Upload
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+<h2>جزئیات</h2>
+
+<fieldset>
+    <legend>آپلود</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FileName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FileName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DownloadLink)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DownloadLink)
+    </div>
+
+</fieldset>
+<p>
+@if (!Request.IsAjaxRequest())
+{
+	<div>
+		@Html.ActionLink("بازگشت", "Index")
+	</div>
+}
+
+</p>

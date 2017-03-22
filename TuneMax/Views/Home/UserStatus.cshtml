@@ -1,0 +1,4 @@
+﻿@Session["fullname"].ToString()
+@Html.ActionLink("خروج","Logout","Home")
+@Html.ActionLink("سبد خرید","Basket")
+@Ajax.ActionLink("ویرایش اطلاعات حساب کاربری","UserProfile","Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })

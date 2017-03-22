@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TuneMax.Models.ShopList>
+
+@{
+    ViewBag.Title = "لیست خرید";
+}
+<p class="create">
+    @Ajax.ActionLink("لیست خرید", "Print", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })
+</p>
+
+<table class="gv">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShopId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShopId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            <a href="~/Home/ProductShow/@item.Product.Id">نمایش محصول</a>
+            @Ajax.ActionLink("انصراف "+item.UsersUsername+" از خرید"+"| خرید انجام شده است.","Delete", new { id=item.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })</td>
+    </tr>
+}
+</table>

@@ -1,0 +1,919 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DatabaseModelStoreContainer">
+    <EntitySet Name="AccountSet" EntityType="DatabaseModel.Store.AccountSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NewsGroupSet" EntityType="DatabaseModel.Store.NewsGroupSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NewsSet" EntityType="DatabaseModel.Store.NewsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductGroupSet" EntityType="DatabaseModel.Store.ProductGroupSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductSet" EntityType="DatabaseModel.Store.ProductSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsersSet" EntityType="DatabaseModel.Store.UsersSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsersBaskets" EntityType="DatabaseModel.Store.UsersBaskets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UploadGroupSet" EntityType="DatabaseModel.Store.UploadGroupSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UploadSet" EntityType="DatabaseModel.Store.UploadSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ShopLists" EntityType="DatabaseModel.Store.ShopLists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CommentSet" EntityType="DatabaseModel.Store.CommentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SliderSet" EntityType="DatabaseModel.Store.SliderSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="NewsGroupNews" Association="DatabaseModel.Store.NewsGroupNews">
+      <End Role="NewsGroup" EntitySet="NewsGroupSet" />
+      <End Role="News" EntitySet="NewsSet" />
+    </AssociationSet>
+    <AssociationSet Name="AccountNews" Association="DatabaseModel.Store.AccountNews">
+      <End Role="Account" EntitySet="AccountSet" />
+      <End Role="News" EntitySet="NewsSet" />
+    </AssociationSet>
+    <AssociationSet Name="AccountProductGroup" Association="DatabaseModel.Store.AccountProductGroup">
+      <End Role="Account" EntitySet="AccountSet" />
+      <End Role="ProductGroup" EntitySet="ProductGroupSet" />
+    </AssociationSet>
+    <AssociationSet Name="AccountProduct" Association="DatabaseModel.Store.AccountProduct">
+      <End Role="Account" EntitySet="AccountSet" />
+      <End Role="Product" EntitySet="ProductSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProductGroupProduct" Association="DatabaseModel.Store.ProductGroupProduct">
+      <End Role="ProductGroup" EntitySet="ProductGroupSet" />
+      <End Role="Product" EntitySet="ProductSet" />
+    </AssociationSet>
+    <AssociationSet Name="UsersUsersBasket" Association="DatabaseModel.Store.UsersUsersBasket">
+      <End Role="Users" EntitySet="UsersSet" />
+      <End Role="UsersBasket" EntitySet="UsersBaskets" />
+    </AssociationSet>
+    <AssociationSet Name="ProductUsersBasket" Association="DatabaseModel.Store.ProductUsersBasket">
+      <End Role="Product" EntitySet="ProductSet" />
+      <End Role="UsersBasket" EntitySet="UsersBaskets" />
+    </AssociationSet>
+    <AssociationSet Name="AccountUploadGroup" Association="DatabaseModel.Store.AccountUploadGroup">
+      <End Role="Account" EntitySet="AccountSet" />
+      <End Role="UploadGroup" EntitySet="UploadGroupSet" />
+    </AssociationSet>
+    <AssociationSet Name="UploadGroupUpload" Association="DatabaseModel.Store.UploadGroupUpload">
+      <End Role="UploadGroup" EntitySet="UploadGroupSet" />
+      <End Role="Upload" EntitySet="UploadSet" />
+    </AssociationSet>
+    <AssociationSet Name="AccountUpload" Association="DatabaseModel.Store.AccountUpload">
+      <End Role="Account" EntitySet="AccountSet" />
+      <End Role="Upload" EntitySet="UploadSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProductShopList" Association="DatabaseModel.Store.ProductShopList">
+      <End Role="Product" EntitySet="ProductSet" />
+      <End Role="ShopList" EntitySet="ShopLists" />
+    </AssociationSet>
+    <AssociationSet Name="UsersShopList" Association="DatabaseModel.Store.UsersShopList">
+      <End Role="Users" EntitySet="UsersSet" />
+      <End Role="ShopList" EntitySet="ShopLists" />
+    </AssociationSet>
+    <AssociationSet Name="ProductComment" Association="DatabaseModel.Store.ProductComment">
+      <End Role="Product" EntitySet="ProductSet" />
+      <End Role="Comment" EntitySet="CommentSet" />
+    </AssociationSet>
+    <AssociationSet Name="AccountSlider" Association="DatabaseModel.Store.AccountSlider">
+      <End Role="Account" EntitySet="AccountSet" />
+      <End Role="Slider" EntitySet="SliderSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccountSet">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="NewsGroupSet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NewsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Abstract" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NewsGroup_id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AccountUsername" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductGroupSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AccountUsername" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PriceInDollar" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AccountUsername" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductGroupId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsersSet">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Job" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UsersBaskets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UsersUsername" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UploadGroupSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AccountUsername" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UploadSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContentType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContentLength" Type="bigint" Nullable="false" />
+    <Property Name="Bytes" Type="varbinary(max)" Nullable="false" />
+    <Property Name="UploadGroupId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AccountUsername" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShopLists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UsersUsername" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CommentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SliderSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Href" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="AccountUsername" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="NewsGroupNews">
+    <End Role="NewsGroup" Type="DatabaseModel.Store.NewsGroupSet" Multiplicity="1" />
+    <End Role="News" Type="DatabaseModel.Store.NewsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NewsGroup">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="NewsGroup_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountNews">
+    <End Role="Account" Type="DatabaseModel.Store.AccountSet" Multiplicity="1" />
+    <End Role="News" Type="DatabaseModel.Store.NewsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="AccountUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountProductGroup">
+    <End Role="Account" Type="DatabaseModel.Store.AccountSet" Multiplicity="1" />
+    <End Role="ProductGroup" Type="DatabaseModel.Store.ProductGroupSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="ProductGroup">
+        <PropertyRef Name="AccountUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountProduct">
+    <End Role="Account" Type="DatabaseModel.Store.AccountSet" Multiplicity="1" />
+    <End Role="Product" Type="DatabaseModel.Store.ProductSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="AccountUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductGroupProduct">
+    <End Role="ProductGroup" Type="DatabaseModel.Store.ProductGroupSet" Multiplicity="1" />
+    <End Role="Product" Type="DatabaseModel.Store.ProductSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersUsersBasket">
+    <End Role="Users" Type="DatabaseModel.Store.UsersSet" Multiplicity="1" />
+    <End Role="UsersBasket" Type="DatabaseModel.Store.UsersBaskets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="UsersBasket">
+        <PropertyRef Name="UsersUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductUsersBasket">
+    <End Role="Product" Type="DatabaseModel.Store.ProductSet" Multiplicity="1" />
+    <End Role="UsersBasket" Type="DatabaseModel.Store.UsersBaskets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersBasket">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountUploadGroup">
+    <End Role="Account" Type="DatabaseModel.Store.AccountSet" Multiplicity="1" />
+    <End Role="UploadGroup" Type="DatabaseModel.Store.UploadGroupSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="UploadGroup">
+        <PropertyRef Name="AccountUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UploadGroupUpload">
+    <End Role="UploadGroup" Type="DatabaseModel.Store.UploadGroupSet" Multiplicity="1" />
+    <End Role="Upload" Type="DatabaseModel.Store.UploadSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UploadGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Upload">
+        <PropertyRef Name="UploadGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountUpload">
+    <End Role="Account" Type="DatabaseModel.Store.AccountSet" Multiplicity="1" />
+    <End Role="Upload" Type="DatabaseModel.Store.UploadSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Upload">
+        <PropertyRef Name="AccountUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductShopList">
+    <End Role="Product" Type="DatabaseModel.Store.ProductSet" Multiplicity="1" />
+    <End Role="ShopList" Type="DatabaseModel.Store.ShopLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopList">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UsersShopList">
+    <End Role="Users" Type="DatabaseModel.Store.UsersSet" Multiplicity="1" />
+    <End Role="ShopList" Type="DatabaseModel.Store.ShopLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="ShopList">
+        <PropertyRef Name="UsersUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductComment">
+    <End Role="Product" Type="DatabaseModel.Store.ProductSet" Multiplicity="1" />
+    <End Role="Comment" Type="DatabaseModel.Store.CommentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountSlider">
+    <End Role="Account" Type="DatabaseModel.Store.AccountSet" Multiplicity="1" />
+    <End Role="Slider" Type="DatabaseModel.Store.SliderSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Slider">
+        <PropertyRef Name="AccountUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DatabaseModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountSet" EntityType="DatabaseModel.Account" />
+          <EntitySet Name="NewsGroupSet" EntityType="DatabaseModel.NewsGroup" />
+          <EntitySet Name="NewsSet" EntityType="DatabaseModel.News" />
+          <AssociationSet Name="NewsGroupNews" Association="DatabaseModel.NewsGroupNews">
+            <End Role="NewsGroup" EntitySet="NewsGroupSet" />
+            <End Role="News" EntitySet="NewsSet" />
+          </AssociationSet>
+          <AssociationSet Name="AccountNews" Association="DatabaseModel.AccountNews">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="News" EntitySet="NewsSet" />
+          </AssociationSet>
+          <EntitySet Name="ProductGroupSet" EntityType="DatabaseModel.ProductGroup" />
+          <EntitySet Name="ProductSet" EntityType="DatabaseModel.Product" />
+          <AssociationSet Name="AccountProductGroup" Association="DatabaseModel.AccountProductGroup">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="ProductGroup" EntitySet="ProductGroupSet" />
+          </AssociationSet>
+          <AssociationSet Name="AccountProduct" Association="DatabaseModel.AccountProduct">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="Product" EntitySet="ProductSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProductGroupProduct" Association="DatabaseModel.ProductGroupProduct">
+            <End Role="ProductGroup" EntitySet="ProductGroupSet" />
+            <End Role="Product" EntitySet="ProductSet" />
+          </AssociationSet>
+          <EntitySet Name="UsersSet" EntityType="DatabaseModel.Users" />
+          <EntitySet Name="UsersBaskets" EntityType="DatabaseModel.UsersBasket" />
+          <AssociationSet Name="UsersUsersBasket" Association="DatabaseModel.UsersUsersBasket">
+            <End Role="Users" EntitySet="UsersSet" />
+            <End Role="UsersBasket" EntitySet="UsersBaskets" />
+          </AssociationSet>
+          <AssociationSet Name="ProductUsersBasket" Association="DatabaseModel.ProductUsersBasket">
+            <End Role="Product" EntitySet="ProductSet" />
+            <End Role="UsersBasket" EntitySet="UsersBaskets" />
+          </AssociationSet>
+          <EntitySet Name="UploadGroupSet" EntityType="DatabaseModel.UploadGroup" />
+          <EntitySet Name="UploadSet" EntityType="DatabaseModel.Upload" />
+          <AssociationSet Name="AccountUploadGroup" Association="DatabaseModel.AccountUploadGroup">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="UploadGroup" EntitySet="UploadGroupSet" />
+          </AssociationSet>
+          <AssociationSet Name="UploadGroupUpload" Association="DatabaseModel.UploadGroupUpload">
+            <End Role="UploadGroup" EntitySet="UploadGroupSet" />
+            <End Role="Upload" EntitySet="UploadSet" />
+          </AssociationSet>
+          <AssociationSet Name="AccountUpload" Association="DatabaseModel.AccountUpload">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="Upload" EntitySet="UploadSet" />
+          </AssociationSet>
+          <EntitySet Name="ShopLists" EntityType="DatabaseModel.ShopList" />
+          <AssociationSet Name="ProductShopList" Association="DatabaseModel.ProductShopList">
+            <End Role="Product" EntitySet="ProductSet" />
+            <End Role="ShopList" EntitySet="ShopLists" />
+          </AssociationSet>
+          <AssociationSet Name="UsersShopList" Association="DatabaseModel.UsersShopList">
+            <End Role="Users" EntitySet="UsersSet" />
+            <End Role="ShopList" EntitySet="ShopLists" />
+          </AssociationSet>
+          <EntitySet Name="CommentSet" EntityType="DatabaseModel.Comment" />
+          <AssociationSet Name="ProductComment" Association="DatabaseModel.ProductComment">
+            <End Role="Product" EntitySet="ProductSet" />
+            <End Role="Comment" EntitySet="CommentSet" />
+          </AssociationSet>
+          <EntitySet Name="SliderSet" EntityType="DatabaseModel.Slider" />
+          <AssociationSet Name="AccountSlider" Association="DatabaseModel.AccountSlider">
+            <End Role="Account" EntitySet="AccountSet" />
+            <End Role="Slider" EntitySet="SliderSet" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" />
+          <NavigationProperty Name="News" Relationship="DatabaseModel.AccountNews" FromRole="Account" ToRole="News" />
+          <NavigationProperty Name="ProductGroups" Relationship="DatabaseModel.AccountProductGroup" FromRole="Account" ToRole="ProductGroup" />
+          <NavigationProperty Name="Products" Relationship="DatabaseModel.AccountProduct" FromRole="Account" ToRole="Product" />
+          <NavigationProperty Name="UploadGroups" Relationship="DatabaseModel.AccountUploadGroup" FromRole="Account" ToRole="UploadGroup" />
+          <NavigationProperty Name="Uploads" Relationship="DatabaseModel.AccountUpload" FromRole="Account" ToRole="Upload" />
+          <NavigationProperty Name="Sliders" Relationship="DatabaseModel.AccountSlider" FromRole="Account" ToRole="Slider" />
+        </EntityType>
+        <EntityType Name="NewsGroup">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="News" Relationship="DatabaseModel.NewsGroupNews" FromRole="NewsGroup" ToRole="News" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Abstract" Type="String" />
+          <Property Name="Body" Type="String" Nullable="false" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <NavigationProperty Name="NewsGroup" Relationship="DatabaseModel.NewsGroupNews" FromRole="News" ToRole="NewsGroup" />
+          <Property Name="NewsGroup_id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="DatabaseModel.AccountNews" FromRole="News" ToRole="Account" />
+          <Property Name="AccountUsername" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="NewsGroupNews">
+          <End Type="DatabaseModel.NewsGroup" Role="NewsGroup" Multiplicity="1" />
+          <End Type="DatabaseModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsGroup">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="NewsGroup_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AccountNews">
+          <End Type="DatabaseModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="DatabaseModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="AccountUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="DatabaseModel.AccountProductGroup" FromRole="ProductGroup" ToRole="Account" />
+          <Property Name="AccountUsername" Type="String" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="DatabaseModel.ProductGroupProduct" FromRole="ProductGroup" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" />
+          <Property Name="PriceInDollar" Type="String" />
+          <Property Name="Image" Type="String" />
+          <NavigationProperty Name="Account" Relationship="DatabaseModel.AccountProduct" FromRole="Product" ToRole="Account" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <Property Name="AccountUsername" Type="String" Nullable="false" />
+          <NavigationProperty Name="ProductGroup" Relationship="DatabaseModel.ProductGroupProduct" FromRole="Product" ToRole="ProductGroup" />
+          <Property Name="ProductGroupId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="UsersBaskets" Relationship="DatabaseModel.ProductUsersBasket" FromRole="Product" ToRole="UsersBasket" />
+          <NavigationProperty Name="ShopLists" Relationship="DatabaseModel.ProductShopList" FromRole="Product" ToRole="ShopList" />
+          <NavigationProperty Name="Comments" Relationship="DatabaseModel.ProductComment" FromRole="Product" ToRole="Comment" />
+        </EntityType>
+        <Association Name="AccountProductGroup">
+          <End Type="DatabaseModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="DatabaseModel.ProductGroup" Role="ProductGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="ProductGroup">
+              <PropertyRef Name="AccountUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AccountProduct">
+          <End Type="DatabaseModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="DatabaseModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="AccountUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductGroupProduct">
+          <End Type="DatabaseModel.ProductGroup" Role="ProductGroup" Multiplicity="1" />
+          <End Type="DatabaseModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" />
+          <Property Name="Adress" Type="String" Nullable="false" />
+          <Property Name="Job" Type="String" />
+          <NavigationProperty Name="UsersBaskets" Relationship="DatabaseModel.UsersUsersBasket" FromRole="Users" ToRole="UsersBasket" />
+          <NavigationProperty Name="ShopLists" Relationship="DatabaseModel.UsersShopList" FromRole="Users" ToRole="ShopList" />
+        </EntityType>
+        <EntityType Name="UsersBasket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.UsersUsersBasket" FromRole="UsersBasket" ToRole="Users" />
+          <Property Name="UsersUsername" Type="String" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="DatabaseModel.ProductUsersBasket" FromRole="UsersBasket" ToRole="Product" />
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <Association Name="UsersUsersBasket">
+          <End Type="DatabaseModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="DatabaseModel.UsersBasket" Role="UsersBasket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="UsersBasket">
+              <PropertyRef Name="UsersUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductUsersBasket">
+          <End Type="DatabaseModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DatabaseModel.UsersBasket" Role="UsersBasket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersBasket">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UploadGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="DatabaseModel.AccountUploadGroup" FromRole="UploadGroup" ToRole="Account" />
+          <Property Name="AccountUsername" Type="String" Nullable="false" />
+          <NavigationProperty Name="Uploads" Relationship="DatabaseModel.UploadGroupUpload" FromRole="UploadGroup" ToRole="Upload" />
+        </EntityType>
+        <EntityType Name="Upload">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="FileName" Type="String" Nullable="false" />
+          <NavigationProperty Name="UploadGroup" Relationship="DatabaseModel.UploadGroupUpload" FromRole="Upload" ToRole="UploadGroup" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <Property Name="ContentType" Type="String" Nullable="false" />
+          <Property Name="ContentLength" Type="Int64" Nullable="false" />
+          <Property Name="Bytes" Type="Binary" Nullable="false" />
+          <Property Name="UploadGroupId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="DatabaseModel.AccountUpload" FromRole="Upload" ToRole="Account" />
+          <Property Name="AccountUsername" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="AccountUploadGroup">
+          <End Type="DatabaseModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="DatabaseModel.UploadGroup" Role="UploadGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="UploadGroup">
+              <PropertyRef Name="AccountUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UploadGroupUpload">
+          <End Type="DatabaseModel.UploadGroup" Role="UploadGroup" Multiplicity="1" />
+          <End Type="DatabaseModel.Upload" Role="Upload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UploadGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Upload">
+              <PropertyRef Name="UploadGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AccountUpload">
+          <End Type="DatabaseModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="DatabaseModel.Upload" Role="Upload" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Upload">
+              <PropertyRef Name="AccountUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ShopList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="DatabaseModel.ProductShopList" FromRole="ShopList" ToRole="Product" />
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.UsersShopList" FromRole="ShopList" ToRole="Users" />
+          <Property Name="UsersUsername" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductShopList">
+          <End Type="DatabaseModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DatabaseModel.ShopList" Role="ShopList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShopList">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersShopList">
+          <End Type="DatabaseModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="DatabaseModel.ShopList" Role="ShopList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="ShopList">
+              <PropertyRef Name="UsersUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Body" Type="String" Nullable="false" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="DatabaseModel.ProductComment" FromRole="Comment" ToRole="Product" />
+          <Property Name="Username" Type="String" />
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductComment">
+          <End Type="DatabaseModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DatabaseModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Account" Relationship="DatabaseModel.AccountSlider" FromRole="Slider" ToRole="Account" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="ImageUrl" Type="String" Nullable="false" />
+          <Property Name="Href" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" />
+          <Property Name="AccountUsername" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="AccountSlider">
+          <End Type="DatabaseModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="DatabaseModel.Slider" Role="Slider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Slider">
+              <PropertyRef Name="AccountUsername" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseModelContainer">
+    <EntitySetMapping Name="AccountSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Account)">
+        <MappingFragment StoreEntitySet="AccountSet">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsGroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.NewsGroup)">
+        <MappingFragment StoreEntitySet="NewsGroupSet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.News)">
+        <MappingFragment StoreEntitySet="NewsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="NewsGroup_id" ColumnName="NewsGroup_id" />
+          <ScalarProperty Name="AccountUsername" ColumnName="AccountUsername" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductGroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.ProductGroup)">
+        <MappingFragment StoreEntitySet="ProductGroupSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AccountUsername" ColumnName="AccountUsername" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Product)">
+        <MappingFragment StoreEntitySet="ProductSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PriceInDollar" ColumnName="PriceInDollar" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="AccountUsername" ColumnName="AccountUsername" />
+          <ScalarProperty Name="ProductGroupId" ColumnName="ProductGroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Users)">
+        <MappingFragment StoreEntitySet="UsersSet">
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersBaskets">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.UsersBasket)">
+        <MappingFragment StoreEntitySet="UsersBaskets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UsersUsername" ColumnName="UsersUsername" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UploadGroupSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.UploadGroup)">
+        <MappingFragment StoreEntitySet="UploadGroupSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AccountUsername" ColumnName="AccountUsername" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UploadSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Upload)">
+        <MappingFragment StoreEntitySet="UploadSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="ContentLength" ColumnName="ContentLength" />
+          <ScalarProperty Name="Bytes" ColumnName="Bytes" />
+          <ScalarProperty Name="UploadGroupId" ColumnName="UploadGroupId" />
+          <ScalarProperty Name="AccountUsername" ColumnName="AccountUsername" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopLists">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.ShopList)">
+        <MappingFragment StoreEntitySet="ShopLists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="UsersUsername" ColumnName="UsersUsername" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Comment)">
+        <MappingFragment StoreEntitySet="CommentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SliderSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DatabaseModel.Slider)">
+        <MappingFragment StoreEntitySet="SliderSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="Href" ColumnName="Href" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AccountUsername" ColumnName="AccountUsername" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

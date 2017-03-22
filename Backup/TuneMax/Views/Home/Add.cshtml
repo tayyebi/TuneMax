@@ -1,0 +1,30 @@
+﻿@model TuneMax.Models.UsersBasket
+
+@{
+    ViewBag.Title = "افزودن کالا";
+}
+
+<h2>افزودن کالا</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>سبد خرید</legend>
+        <div class="C1">
+            <div class="C2">@ViewBag._ProductTitle</div>
+            <div class="C3"><img src="@ViewBag._ProductImage" title="@ViewBag._ProductTitle" /></div>
+            <div class="C4">@H_Dollar.HDollarToToman(Convert.ToInt32(ViewBag._ProductPrice)) تومان</div>
+        </div>
+        <p>
+            <input type="submit" value="افزودن به سبد" />
+        </p>
+    </fieldset>
+}
+@if (ViewBag.Message != null)
+{
+    <div class="error">
+        @ViewBag.Message
+    </div>
+}

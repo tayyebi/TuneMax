@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TuneMax.Models.NewsGroup>
+
+@{
+    ViewBag.Title = "گروه های خبری";
+}
+<p class="create">
+    @Ajax.ActionLink("ایجاد", "Create", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })
+</p>
+<table class="gv">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "Index", "News", new { id = item.id }, null)
+            -
+            @item.News.Count
+        </td>
+        <td>
+            @Ajax.ActionLink("ویرایش", "Edit", new { id = item.id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })
+            @Ajax.ActionLink("جزئیات", "Details", new { id = item.id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })
+            @Ajax.ActionLink("حذف", "Delete", new { id = item.id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })
+        </td>
+    </tr>
+}
+</table>
+

@@ -1,0 +1,25 @@
+﻿@model TuneMax.Models.UsersBasket
+
+@{
+    ViewBag.Title = "حذف از سبد خرید";
+}
+
+<h2>حذف از سبد خرید</h2>
+
+<h3>آیا از حذف این محصول از سبد خرید خود اطمینان دارید؟</h3>
+<fieldset>
+    <legend>سبد خرید</legend>
+    <div class="C1">
+        <div class="C2">@ViewBag._ProductTitle</div>
+        <div class="C3"><img src="@ViewBag._ProductImage" title="@ViewBag._ProductTitle" /></div>
+        <div class="C4">@Html.Raw(Model.Product.Description)</div>
+    </div>
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="حذف" />
+    </p>
+}

@@ -1,0 +1,44 @@
+﻿@model TuneMax.Models.Upload
+
+@{
+    ViewBag.Title = "آپلود";
+}
+
+<h2>آپلود</h2>
+<form method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>آپلود</legend>
+            <div class="editor-field">
+                <input type="file" name="FileUploader" />
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FileName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.FileName)
+                @Html.ValidationMessageFor(model => model.FileName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UploadGroupId, "UploadGroup")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("UploadGroupId", String.Empty)
+                @Html.ValidationMessageFor(model => model.UploadGroupId)
+            </div>
+
+            <p>
+                <input type="submit" value="آپلود و ثبت در پایگاه های داده" />
+            </p>
+</fieldset>
+
+    @if (!Request.IsAjaxRequest())
+    {
+        <div>
+            @Html.ActionLink("بازگشت", "Index")
+        </div>
+    }
+</form>

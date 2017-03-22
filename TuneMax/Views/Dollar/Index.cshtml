@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TuneMax.Models.Dollar>
+@{
+    ViewBag.Title = "ارزش دلار";
+}
+ارزش یک دلار @H_Dollar.HDollarToToman(1) تومان است.
+
+<p class="create">@Ajax.ActionLink("ویرایش قیمت دلار", "Create", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })</p>
+<p class="create">@Html.ActionLink("پاک کردن تاریخچه فیمت دلار", "Delete")</p>
+
+<table class="gv">
+    <tr>
+        <th>
+            تاریخ
+        </th>
+        <th>
+            قیمت
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,52 @@
+﻿@model TuneMax.Models.Upload
+
+@{
+    ViewBag.Title = "حذف";
+}
+
+<h2>Delete</h2>
+
+<h3>آیا از حذف این رکورد اطمینان دارید؟</h3>
+<fieldset>
+    <legend>آپلود</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FileName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FileName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ContentType)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContentType)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ContentLength)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContentLength)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UploadGroup.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UploadGroup.Name)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="حذف" />
+@if (!Request.IsAjaxRequest())
+{
+		<div>
+			@Html.ActionLink("بازگشت", "Index")
+		</div>
+}
+    </p>
+}

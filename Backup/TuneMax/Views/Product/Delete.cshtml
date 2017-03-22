@@ -1,0 +1,45 @@
+﻿@model TuneMax.Models.Product
+
+@{
+    ViewBag.Title = "حذف";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف این رکورد اطمینان دارید؟</h3>
+<fieldset>
+    <legend>محصولات</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceInDollar)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceInDollar)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Image)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Image)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="حذف" />
+@if (!Request.IsAjaxRequest())
+{
+        <div>
+            @Html.ActionLink("بازگشت", "Index")
+        </div>
+}
+    </p>
+}

@@ -1,0 +1,56 @@
+﻿@model TuneMax.Models.Comment
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+<h2>جزئیات</h2>
+
+<fieldset>
+    <legend>نظر</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Body)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Body)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Product.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Product.Title)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id=Model.Id })
+@if (!Request.IsAjaxRequest())
+{
+	<div>
+		@Html.ActionLink("بازگشت", "Index")
+	</div>
+}
+
+</p>

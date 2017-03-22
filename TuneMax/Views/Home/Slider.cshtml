@@ -1,0 +1,14 @@
+﻿@model IEnumerable<TuneMax.Models.Slider>
+<div id="slider-container">
+    <div class="s_images">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="@item.Href"><img src="@item.ImageUrl" alt="@item.Description" title="@item.Title" id="@item.Id" /></a>
+                    @item.Description
+                </li>
+            }
+        </ul>
+    </div>
+</div>

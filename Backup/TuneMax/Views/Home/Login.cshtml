@@ -1,0 +1,48 @@
+﻿@model TuneMax.Models.UserLogin
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>ورود به سیستم</legend>
+@if (Session["username"] == null)
+{
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KeepMe)
+            @Html.EditorFor(model => model.KeepMe)
+        </div>
+        <p>
+            <input type="submit" value="ورود" />
+            <br />
+            عضو نشده اید؟ همین حالا ثبت نام کنید!
+            <br />
+            @Html.ActionLink("ثبت نام", "Register", "Home")
+        </p>
+}
+else
+{
+    <p>شما وارد سیستم شده اید.</p>
+}
+    </fieldset>
+}
+@if (ViewBag.Message!=null)
+{
+    <div class="error">
+        @ViewBag.Message
+    </div>
+}

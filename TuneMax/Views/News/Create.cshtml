@@ -1,0 +1,62 @@
+﻿@model TuneMax.Models.News
+
+@{
+    ViewBag.Title = "جدید";
+}
+
+<h2>جدید</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>اخبار</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Abstract)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Abstract)
+            @Html.ValidationMessageFor(model => model.Abstract)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Body)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Body)
+            @Html.ValidationMessageFor(model => model.Body)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NewsGroup_id, "NewsGroup")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("NewsGroup_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.NewsGroup_id)
+        </div>
+        <p>
+            <input type="submit" value="افزودن" />
+        </p>
+    </fieldset>
+}
+
+@if (!Request.IsAjaxRequest())
+{
+    <div>
+        @Html.ActionLink("بازگشت", "Index")
+    </div>
+}
+@section Scripts{
+    <script type="text/javascript">
+        CKEDITOR.replace('Body', { stylesSet: [{ name: 'Strong Emphasis', element: 'strong' }, { name: 'Emphasis', element: 'em' }, { name: 'Computer Code', element: 'code' }, { name: 'Keyboard Phrase', element: 'kbd' }, { name: 'Sample Text', element: 'samp' }, { name: 'Variable', element: 'var' }, { name: 'Deleted Text', element: 'del' }, { name: 'Inserted Text', element: 'ins' }, { name: 'Cited Work', element: 'cite' }, { name: 'Inline Quotation', element: 'q' }] });
+    </script>
+}

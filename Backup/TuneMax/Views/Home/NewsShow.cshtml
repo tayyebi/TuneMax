@@ -1,0 +1,20 @@
+﻿@model TuneMax.Models.News
+
+@{
+    ViewBag.Title = Model.Title;
+}
+<div class="C2">
+    @Html.DisplayFor(model => model.Title)
+</div>
+
+<div class="C4">
+    @Html.DisplayFor(model => model.Abstract)
+</div>
+<div class="C3">
+    @Html.DisplayFor(model => model.Date)-
+    @Html.ActionLink(Model.NewsGroup.Name, "NewsGroup", new { id = Model.NewsGroup.id })-
+    @Html.DisplayFor(model => model.Account.Fullname)
+</div>
+<div class="C5">
+    @Html.Raw(Model.Body)
+</div>

@@ -1,0 +1,38 @@
+﻿@model TuneMax.Models.UploadGroup
+
+@{
+    ViewBag.Title = "ویرایش";
+}
+
+<h2>ویرایش</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>گروه آپلود</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <p>
+            <input type="submit" value="ذخیره" />
+        </p>
+    </fieldset>
+}
+
+@if (!Request.IsAjaxRequest())
+{
+<div>
+    @Html.ActionLink("بازگشت", "Index")
+</div>
+}
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TuneMax.Models.ShopList>
+
+@{
+    ViewBag.Title = "لیست خرید";
+}
+
+<h1>پرینت لیست خرید</h1>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.PriceInDollar)
+        </th>
+        <th>
+            قیمت به تومان در @DateTime.Now.ToString()
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            شماره تلفن سفارش دهنده
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.PriceInDollar)
+            </td>
+            <td>
+                @H_Dollar.HDollarToToman(Convert.ToInt32(item.Product.PriceInDollar))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.PhoneNumber)
+            </td>
+        </tr>
+    }
+</table>

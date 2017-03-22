@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TuneMax.Models.News>
+
+@{
+    ViewBag.Title = "آرشیو اخبار";
+}
+
+<table class="gv">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsGroup.Name)
+        </th>
+        <th></th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsGroup.Name)
+        </td>
+        <td>
+            @Html.ActionLink("نمایش", "NewsShow", new { id = item.Id })
+        </td>
+    </tr>
+}
+</table>

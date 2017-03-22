@@ -1,0 +1,26 @@
+﻿@model TuneMax.Models.UploadGroup
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+<h2>جزئیات</h2>
+
+<fieldset>
+    <legend>اخبار</legend>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id=Model.Id })
+@if (!Request.IsAjaxRequest())
+{
+    <div>
+        @Html.ActionLink("بازگشت", "Index")
+    </div>
+}
+</p>

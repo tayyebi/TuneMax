@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    @*@Styles.Render("~/Content/account")
+    @Styles.Render("~/Content/themes")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/-HtmlEditor/ckeditor.js")*@
+    <link href="~/Content/Private.css" rel="stylesheet" />
+    <link href="~/Content/themes/THEME/jquery-ui-1.10.3.css" rel="stylesheet" />
+    <link href="~/Content/slider/style.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/-HtmlEditor/ckeditor.js"></script>
+
+</head>
+<body>
+    <div id="dynamic"></div>
+    <div class="main">
+        <div class="header"></div>
+        <div class="menu">
+            @Html.Action("Menu","Account")
+        </div>
+        <div class="container">
+            <div class="toolbox">
+                <h3>
+                    @ViewBag.Title
+                </h3>
+                <div>
+                    @Html.Action("Tools","Account")
+                </div>
+                <h3>
+                    @User.Identity.Name
+                </h3>
+                <div>
+                    @Html.ActionLink("خروج", "Logout", "Account")
+                    @Ajax.ActionLink("تغییر کلمه عبور", "ChangePassword", "Account", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })
+                    @Ajax.ActionLink("مدیریت حساب کاربری", "UserProfile", "Account", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })
+                </div>
+            </div>
+            <div class="content">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="footer">
+            Copyright ©  2013
+            <br />
+            تمامی حقوق محفوظ است
+        </div>
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")*@
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/-Slider/slider.js"></script>
+    <script src="~/-Slider/script.js"></script>
+
+    <script type="text/javascript">
+        $('#dynamic').hide();
+        $('.create').button();
+        $('.toolbox').accordion();
+        function OpenDialog() {
+            $('#dynamic').dialog({
+                modal: true
+            });
+        }
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

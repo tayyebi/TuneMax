@@ -1,0 +1,15 @@
+﻿@model IEnumerable<TuneMax.Models.News>
+@foreach (var item in Model){
+<div class="C1">
+    <div class="C2">
+        @Html.ActionLink(item.Title, "NewsShow", new { id = item.Id })
+    </div>
+    <div class="C3">
+        @Html.DisplayFor(modelItem => item.Date) -
+        @Html.ActionLink(item.NewsGroup.Name, "NewsGroup", new { id = item.NewsGroup.id })
+    </div>
+    <div class="C4">
+        @Html.DisplayFor(modelItem => item.Abstract)
+    </div>
+</div>  
+}

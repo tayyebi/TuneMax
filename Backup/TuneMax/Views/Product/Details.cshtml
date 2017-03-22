@@ -1,0 +1,55 @@
+﻿@model TuneMax.Models.Product
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+<h2>جزئیات</h2>
+
+<fieldset>
+    <legend>محصولات</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceInDollar)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceInDollar)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Image)
+    </div>
+    <div class="display-field">
+        <img src="@Model.Image" title="@Model.Title" />
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductGroup.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductGroup.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id=Model.Id })
+@if (!Request.IsAjaxRequest())
+{
+    <div>
+        @Html.ActionLink("بازگشت", "Index")
+    </div>
+}
+</p>

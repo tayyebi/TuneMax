@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TuneMax.Models.UsersBasket>
+
+@{
+    ViewBag.Title = "سبد خرید";
+}
+
+<table class="gv">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductGroup.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Image)
+        </th>
+        <th>
+            قیمت به تومان
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductGroup.Name)
+            </td>
+            <td>
+                <img src="@item.Product.Image" alt="@item.Product.Title" title="@item.Product.Title" />
+            </td>
+            <td>
+                @H_Dollar.HDollarToToman(Convert.ToInt32(item.Product.PriceInDollar))
+            </td>
+            <td>
+                @Html.ActionLink("حذف از سبد", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                @Html.ActionLink("تائید", "Buy", new { id = item.Id })
+            </td>
+            <td>
+                @Html.ActionLink("نمایش", "ProductShow", new { id = item.ProductId })
+            </td>
+        </tr>
+    }
+</table>
+@if (ViewBag.Message != null)
+{
+    <div class="error">
+        @ViewBag.Message
+    </div>
+}

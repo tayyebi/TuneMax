@@ -1,0 +1,56 @@
+﻿@model TuneMax.Models.ShopList
+
+@{
+    ViewBag.Title = "کاربر از خرید انصراف داده است | خرید انجام شده است";
+}
+
+<h2>کاربر از خرید انصراف داده است | خرید انجام شده است</h2>
+
+<h3>
+    آیا کاربر از خرید انصراف داده است؟
+    <br/>
+    آیا خرید انجام شده است؟        
+</h3>
+<fieldset>
+    <legend>لیست خرید</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Product.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Product.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ShopId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShopId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="تائید" />
+@if (!Request.IsAjaxRequest())
+{
+		<div>
+			@Html.ActionLink("بازگشت", "Index")
+		</div>
+}
+    </p>
+}

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<TuneMax.Models.Product>
+@foreach (var item in Model)
+{
+<div class="C1">
+    <div class="C2">
+        @Html.ActionLink(item.Title, "ProductShow", new { id = item.Id })
+    </div>
+    <div class="C3">
+        @Html.DisplayFor(modelItem => item.Date)-
+        @Html.ActionLink(item.ProductGroup.Name, "ProductGroup", new { id = item.ProductGroup.Id })
+    </div>
+    <div class="C4">
+        <img title="@item.Title" src="@item.Image" />
+    </div>
+</div>
+}

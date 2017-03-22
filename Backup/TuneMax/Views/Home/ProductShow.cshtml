@@ -1,0 +1,23 @@
+﻿@model TuneMax.Models.Product
+
+@{
+    ViewBag.Title = Model.Title;
+}
+<div class="C2">
+    @Html.DisplayFor(model => model.Title)
+</div>
+<div class="C4">
+    <img src="@Model.Image"alt="@Model.Title" />
+</div>
+<div class="C3">
+    @Html.ActionLink(Model.ProductGroup.Name, "ProductGroup", new { id = Model.ProductGroup.Id })
+</div>
+<div class="C5">
+    @Html.Raw(Model.Description)
+</div>
+<div class="C7">
+    <h2>قیمت:@H_Dollar.HDollarToToman(Convert.ToInt32(Model.PriceInDollar)) تومان</h2>
+    @Html.ActionLink("خرید","Add", new { id = Model.Id })
+    @Ajax.ActionLink("نظردهی", "Comment", new { id = Model.Id }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "dynamic", OnComplete = "OpenDialog()" })
+    @Html.ActionLink("نظر ها", "Comments", new { id = Model.Id })
+</div>

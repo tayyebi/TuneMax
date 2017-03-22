@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9142a014d0e7406ea5df9a8db32403d5" Name="Diagram1" ZoomLevel="115" >
+        <EntityTypeShape EntityType="DatabaseModel.Account" Width="1.5" PointX="7.25" PointY="2.5" FillColor="White" />
+        <EntityTypeShape EntityType="DatabaseModel.NewsGroup" Width="1.5" PointX="5.25" PointY="0.625" FillColor="Black" />
+        <EntityTypeShape EntityType="DatabaseModel.News" Width="1.5" PointX="10" PointY="0.625" FillColor="Black" />
+        <AssociationConnector Association="DatabaseModel.NewsGroupNews" />
+        <AssociationConnector Association="DatabaseModel.AccountNews" />
+        <EntityTypeShape EntityType="DatabaseModel.ProductGroup" Width="1.5" PointX="7" PointY="6.625" FillColor="192, 0, 0" />
+        <EntityTypeShape EntityType="DatabaseModel.Product" Width="1.5" PointX="11.375" PointY="6.375" FillColor="192, 0, 0" />
+        <AssociationConnector Association="DatabaseModel.AccountProductGroup" />
+        <AssociationConnector Association="DatabaseModel.AccountProduct" />
+        <AssociationConnector Association="DatabaseModel.ProductGroupProduct" />
+        <EntityTypeShape EntityType="DatabaseModel.Users" Width="1.5" PointX="15.125" PointY="4.75" FillColor="192, 192, 0" />
+        <EntityTypeShape EntityType="DatabaseModel.UsersBasket" Width="1.5" PointX="15" PointY="2.25" FillColor="192, 192, 0" />
+        <AssociationConnector Association="DatabaseModel.UsersUsersBasket" />
+        <AssociationConnector Association="DatabaseModel.ProductUsersBasket" />
+        <EntityTypeShape EntityType="DatabaseModel.UploadGroup" Width="1.5" PointX="2" PointY="1" FillColor="128, 64, 64" />
+        <EntityTypeShape EntityType="DatabaseModel.Upload" Width="1.5" PointX="2" PointY="3.75" FillColor="128, 64, 64" />
+        <AssociationConnector Association="DatabaseModel.AccountUploadGroup" />
+        <AssociationConnector Association="DatabaseModel.UploadGroupUpload" />
+        <AssociationConnector Association="DatabaseModel.AccountUpload" />
+        <EntityTypeShape EntityType="DatabaseModel.ShopList" Width="1.5" PointX="17.875" PointY="5.375" FillColor="255, 192, 255" />
+        <AssociationConnector Association="DatabaseModel.ProductShopList" />
+        <AssociationConnector Association="DatabaseModel.UsersShopList" />
+        <EntityTypeShape EntityType="DatabaseModel.Comment" Width="1.5" PointX="15.125" PointY="8.75" FillColor="192, 0, 0" />
+        <AssociationConnector Association="DatabaseModel.ProductComment" />
+        <EntityTypeShape EntityType="DatabaseModel.Slider" Width="1.5" PointX="4.5" PointY="5.625" FillColor="White" />
+        <AssociationConnector Association="DatabaseModel.AccountSlider" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

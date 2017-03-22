@@ -1,0 +1,40 @@
+﻿@model TuneMax.Models.AccountLogin
+@{
+    ViewBag.Title = "ورود به سیستم";
+}
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="box login">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KeepMe)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KeepMe)
+            @Html.ValidationMessageFor(model => model.KeepMe)
+        </div>
+        <input type="submit" value="ورود به سیستم" />
+    </div>
+}
+@if (ViewBag.LoginError != null)
+{
+    <div class="error">
+        @ViewBag.LoginError
+    </div>
+}

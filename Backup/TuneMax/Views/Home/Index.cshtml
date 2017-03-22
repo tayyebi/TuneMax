@@ -1,0 +1,6 @@
+﻿@{
+    ViewBag.Title = "◄ TuneMax | تیون مکس ►";
+}
+@if (Session["username"] == null){<div class="C6 Login">@Html.Action("Login", "Home")</div>}
+<div class="News">@Html.Action("TopNews", "Home")</div>
+<div class="Product">@Html.Action("TopProducts", "Home")</div>

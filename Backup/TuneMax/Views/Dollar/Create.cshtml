@@ -1,0 +1,37 @@
+﻿@model TuneMax.Models.Dollar
+
+@{
+    ViewBag.Title = "ویرایش ارزش دلار";
+}
+
+<h2>ارزش دلار در این لحظه</h2>
+<h3>@DateTime.Now.ToLongDateString()-@DateTime.Now.ToLongTimeString()</h3>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ارزش دلار</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.price)
+            @Html.ValidationMessageFor(model => model.price)
+        </div>
+
+        <p>
+            <input type="submit" value="ویرایش" />
+        </p>
+    </fieldset>
+}
+
+@if (!Request.IsAjaxRequest())
+{
+<div>
+    @Html.ActionLink("بازگشت", "Index")
+</div>
+}
+

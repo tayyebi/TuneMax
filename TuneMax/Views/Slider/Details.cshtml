@@ -1,0 +1,42 @@
+﻿@model TuneMax.Models.Slider
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+<h2>جزئیات</h2>
+
+<fieldset>
+    <legend>اسلایدر</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ImageUrl)
+    </div>
+    <div class="display-field">
+        <img src="@Model.ImageUrl" title="@Model.Title"/>
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id=Model.Id })
+@if (!Request.IsAjaxRequest())
+{
+	<div>
+		@Html.ActionLink("بازگشت", "Index")
+	</div>
+}
+
+</p>

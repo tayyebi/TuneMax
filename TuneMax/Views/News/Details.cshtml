@@ -1,0 +1,62 @@
+﻿@model TuneMax.Models.News
+
+@{
+    ViewBag.Title = "جزئیات";
+}
+
+<h2>جزئیات</h2>
+
+<fieldset>
+    <legend>اخبار</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Abstract)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Abstract)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Body)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.Body)        
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NewsGroup.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NewsGroup.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Account.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Account.FirstName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id=Model.Id })
+@if (!Request.IsAjaxRequest())
+{
+    <div>
+        @Html.ActionLink("بازگشت", "Index")
+    </div>
+}
+</p>

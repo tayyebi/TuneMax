@@ -1,0 +1,74 @@
+﻿@model TuneMax.Models.Users
+
+@{
+    ViewBag.Title = "ویرایش حساب کاربری";
+}
+
+<h2>ویرایش حساب کاربری</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>@Session["username"] @Session["fullname"]</legend>
+
+        @Html.HiddenFor(model => model.Username)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PhoneNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Adress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Adress)
+            @Html.ValidationMessageFor(model => model.Adress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Job)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Job)
+            @Html.ValidationMessageFor(model => model.Job)
+        </div>
+
+        @Html.HiddenFor(model => model.Password)
+
+        <p>
+            <input type="submit" value="ذخیره" />
+        </p>
+
+        @Html.ActionLink("تغییر کلمه عبور", "ChangePassword", "Home")
+    </fieldset>
+}
+
+@if (!Request.IsAjaxRequest())
+{
+<div>
+    @Html.ActionLink("بازگشت", "Index")
+</div>
+}
+
